@@ -67,21 +67,18 @@ def login_senha():
     global tentativas, senha
     print("Você é um administrador, favor inserir a senha para continuar")
     senha_inserida = input("Digite a senha: ")
-    if senha_inserida == "0":
-        main()
+    if senha_inserida == senha:
+            administrador()
     elif senha_inserida != senha:
         tentativas -= 1
         if tentativas == 0:
             print()
             print("Você excedeu o número de tentativas, desligando o sistema por motivos de segurança")
             exit()
-        if tentativas != 0:
+        elif tentativas != 0:
             print()
-            print(f"Senha incorreta, você tem mais {tentativas} tentativas restantes")
-            print ("Se você não for o administrador, por favor volte para a pagina inicial digitando '0' no lugar da senha\n")
+            print(f"Senha incorreta, você tem mais {tentativas} tentativas restantes")    
             login_senha()
-        elif senha_inserida == senha:
-            administrador()
 
 
 #função do administrador, onde ele pode alterar o preço da passagem ou verificar o saldo do usuário
@@ -104,15 +101,27 @@ def administrador():
         print(f"O saldo do usuario é de R${creditos_cartão}\n")
         administrador()
     elif escolha == 3:
-        global senha
-        senha = input("Insira a nova senha: ")
-        print("Senha alterada com sucesso!\n")
-        administrador()
+       redefinir_senha()
     elif escolha == 4:
         main() 
     else:
         print("Opção inválida, tente novamente!\n")
         administrador()
+
+def redefinir_senha():
+    global senha
+    nova_senha = input("Insira a nova senha: ")
+    if nova_senha == senha:
+        print("A nova senha não pode ser igual a senha antiga, tente novamente")
+        redefinir_senha()
+    elif len(nova_senha) < 4:
+        print("A senha deve ter no mínimo 4 caracteres, tente novamente")
+        redefinir_senha()
+    else:
+        senha = nova_senha
+        print("Senha redefinida com sucesso!\n")
+        administrador()
+    
         
 if tentativas != 0:   #se o numero de tentativas for diferente de 0, o programa irá rodar, isto serve basicamente para dar o start no programa uma vez que ele sempre começa com 3 tentativas
     main()
