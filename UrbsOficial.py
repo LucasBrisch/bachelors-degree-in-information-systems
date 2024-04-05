@@ -4,7 +4,7 @@ tentativas = 3  # tentativas de senha
 senha = "admin123"  # senha do administrador
 
 while True:
-    volta = 0
+    volta = 0 #Essa variavel é usada para quebrar o loop do administrador, para evitar q o usuário fique preso na tela da senha
     print()
     print("Bem-vindo ao sistema da Urbs!")
     print("Você é usuário ou administrador?\n")

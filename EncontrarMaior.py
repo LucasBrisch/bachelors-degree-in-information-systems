@@ -8,3 +8,5 @@ while contador <= 5:
     contador += 1
 
 print(f"O maior número digitado foi {maior}") 
+
+#programa simples para identificar o maior numero escrito pelo usuario

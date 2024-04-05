@@ -14,5 +14,5 @@ while contador <= num_alunos:
 random.shuffle (lista_alunos) 
 print('a ordem da apresentação é:')
 
-for aluno in lista_alunos:
+for aluno in lista_alunos: # O for é lido da seguinte forma "para cada aluno na lista de alunos faça:"
     print(aluno) # O programa imprime o nome de cada aluno, na ordem em que aparecem na lista
