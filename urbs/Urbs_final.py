@@ -12,12 +12,12 @@ def main():
     print("[1] Usuário")
     print("[2] Administrador") 
     print("[3] Sair\n")
-    escolha = int(input("Escolha uma opção: "))
-    if escolha == 1:
+    escolha = str(input("Escolha uma opção: "))
+    if escolha == '1':
         usuario()
-    if escolha == 2:
+    if escolha == '2':
         login_senha()
-    if escolha == 3:
+    if escolha == '3':
         exit()
     else:
         print("Opção inválida, tente novamente!")
@@ -34,13 +34,13 @@ def usuario():
     print("[1] Carregar cartão")
     print("[2] Fazer viagem")
     print("[3] voltar para pagina inicial\n")
-    escolha = int(input("Escolha uma opção: "))
-    if escolha == 1:
+    escolha = str(input("Escolha uma opção: "))
+    if escolha == '1':
         creditos_adicionados = int(input("Insira quantos créditos deseja colocar no cartão: "))
         creditos_cartão = creditos_cartão + creditos_adicionados
         print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
         usuario()
-    elif escolha == 2:
+    elif escolha == '2':
         if creditos_cartão >= preco_passagem:
             creditos_cartão -= preco_passagem
             print(f"Você fez uma viagem! o custo foi de R${preco_passagem}")
@@ -50,24 +50,26 @@ def usuario():
             print("Você não tem créditos suficientes para fazer uma viagem, deseja carregar o cartão? \n")
             print("[1] Sim")
             print("[2] Não\n")
-            escolha = int(input("Escolha uma opção: "))
-            if escolha == 1:
+            escolha = str(input("Escolha uma opção: "))
+            if escolha == '1':
                 creditos_adicionados = int(input("insiira quantos créditos deseja colocar no cartão: "))
                 creditos_cartão = creditos_cartão + creditos_adicionados
                 print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
                 usuario()
-            elif escolha == 2:
+            elif escolha == '2':
                 print("Você não pode fazer uma viagem sem créditos, volte quando quiser recarregar\n")
                 usuario()
-    elif escolha == 3:
+    elif escolha == '3':
         main()
         
 #função de login do administrador, onde ele precisa inserir a senha para acessar as funções de administrador
 def login_senha():
     global tentativas, senha
     print("Você é um administrador, favor inserir a senha para continuar")
-    senha_inserida = input("Digite a senha: ")
-    if senha_inserida == senha:
+    senha_inserida = input("(caso queira voltar, digite 'voltar')Digite a senha: ")
+    if senha_inserida == "voltar":
+        main()
+    elif senha_inserida == senha:
             administrador()
     elif senha_inserida != senha:
         tentativas -= 1
@@ -89,20 +91,20 @@ def administrador():
     print("[2] Verificar saldo do usuário")
     print("[3] definir uma nova senha")
     print("[4] Voltar para pagina inicial\n")
-    escolha = int(input("Escolha uma opção: "))
-    if escolha == 1:
+    escolha = str(input("Escolha uma opção: "))
+    if escolha == '1':
         global preco_passagem
         preco_passagem = int(input("insira o novo preço da passagem: "))
         print (f"O preço da passagem agora é de R${preco_passagem}\n")
         administrador()
-    elif escolha == 2:
+    elif escolha == '2':
         global creditos_cartão
         print()
         print(f"O saldo do usuario é de R${creditos_cartão}\n")
         administrador()
-    elif escolha == 3:
+    elif escolha == '3':
        redefinir_senha()
-    elif escolha == 4:
+    elif escolha == '4':
         main() 
     else:
         print("Opção inválida, tente novamente!\n")
@@ -110,8 +112,10 @@ def administrador():
 
 def redefinir_senha():
     global senha
-    nova_senha = input("Insira a nova senha: ")
-    if nova_senha == senha:
+    nova_senha = input("(caso queira voltar, digite: 'voltar')Insira a nova senha: ")
+    if nova_senha == "voltar":
+        administrador()
+    elif nova_senha == senha:
         print("A nova senha não pode ser igual a senha antiga, tente novamente")
         redefinir_senha()
     elif len(nova_senha) < 4:
