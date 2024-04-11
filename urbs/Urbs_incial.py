@@ -11,7 +11,7 @@ while True:
     print("[1] Usuário")
     print("[2] Administrador")
     print("[3] Sair\n")
-    escolha = str(input("Escolha uma opção: "))
+    escolha = (input("Escolha uma opção: "))
 
     if escolha == '1':
         while True:
@@ -34,16 +34,26 @@ while True:
                     print(f"Você fez uma viagem! O custo foi de R${preco_passagem}")
                     print(f"Agora você tem R${creditos_cartão}\n")
                 else:
-                    print("Você não tem créditos suficientes para fazer uma viagem, deseja carregar o cartão? \n")
-                    print("[1] Sim")
-                    print("[2] Não\n")
-                    escolha = (input("Escolha uma opção: "))
-                    if escolha == '1':
-                        creditos_adicionados = (input("Insira quantos créditos deseja colocar no cartão: "))
-                        creditos_cartão += creditos_adicionados
-                        print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
-                    elif escolha == '2':
-                        print("Você não pode fazer uma viagem sem créditos, volte quando quiser recarregar\n")
+                    while True:
+                        print("Você não tem créditos suficientes para fazer uma viagem, deseja carregar o cartão? \n")
+                        print("[1] Sim")
+                        print("[2] Não\n")
+                        escolha = (input("Escolha uma opção: "))
+                        if escolha == '1':
+                            creditos_adicionados = int(input("Insira quantos créditos deseja colocar no cartão? (Se deseja voltar digite '0'): "))
+                            if creditos_adicionados < 0:
+                                print("Você não pode adicionar créditos negativos, tente novamente!\n")
+                            elif creditos_adicionados == 0:
+                                print("Voltando para o menu de usuário\n")
+                                break
+                            creditos_cartão += int(creditos_adicionados)
+                            print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
+                            break
+                        elif escolha == '2':
+                            print("Você não pode fazer uma viagem sem créditos, volte quando quiser recarregar\n")
+                            break
+                        else:
+                            print("Opção inválida, tente novamente!\n")
             elif escolha == '3':
                 break
             else:
@@ -66,8 +76,17 @@ while True:
                     escolha = (input("Escolha uma opção: "))
 
                     if escolha == '1':
-                        preco_passagem = int(input("Insira o novo preço da passagem: "))
-                        print(f"O preço da passagem agora é de R${preco_passagem}\n")
+                        while True:
+                            novo_preco_passagem = float(input("Qual será o novo preço da passagem? (Se deseja voltar digite '0'): "))
+                            if novo_preco_passagem < 0:
+                                print("O preço da passagem não pode ser negativo, tente novamente!\n")
+                            elif novo_preco_passagem == 0:
+                                print("Voltando para o menu de administrador\n")
+                                break
+                            else:
+                                preco_passagem = novo_preco_passagem
+                                print(f"O preço da passagem agora é de R${preco_passagem}\n")
+                                break
                     elif escolha == '2':
                         print()
                         print(f"O saldo do usuário é de R${creditos_cartão}\n")
@@ -99,7 +118,7 @@ while True:
                 else:
                     print()
                     print(f"Senha incorreta, você tem mais {tentativas} tentativas restantes")
-    elif escolha == 3:
+    elif escolha == "3":
         break
     else:
         print("Opção inválida, tente novamente!")
