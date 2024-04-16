@@ -26,9 +26,14 @@ while start:
             escolha_user = (input("Escolha uma opção: "))
 
             if escolha_user == '1':
-                creditos_adicionados = int(input("Insira quantos créditos deseja colocar no cartão: "))
-                creditos_cartão += creditos_adicionados
-                print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
+                creditos_adicionados = int(input("Quantos créditos deseja colocar no cartão? (Se deseja voltar digite '0')\n"))
+                if creditos_adicionados < 0:
+                    print("Você não pode adicionar créditos negativos, tente novamente!\n")
+                elif creditos_adicionados == 0:
+                    print("Voltando para o menu de usuário\n")
+                else:
+                    creditos_cartão += creditos_adicionados
+                    print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
             elif escolha_user == '2':
                 if creditos_cartão >= preco_passagem:
                     creditos_cartão -= preco_passagem
@@ -47,9 +52,10 @@ while start:
                             elif creditos_adicionados == 0:
                                 print("Voltando para o menu de usuário\n")
                                 break
-                            creditos_cartão += int(creditos_adicionados)
-                            print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
-                            break
+                            else:
+                                creditos_cartão += int(creditos_adicionados)
+                                print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
+                                break
                         elif escolha == '2':
                             print("Você não pode fazer uma viagem sem créditos, volte quando quiser recarregar\n")
                             break
