@@ -2,8 +2,9 @@ creditos_cartão = 0  # saldo inicial do cartão
 preco_passagem = 6  # preço inicial da passagem
 tentativas = 3  # tentativas de senha
 senha = "admin123"  # senha do administrador
+start = True
 
-while True:
+while start:
     volta = 0
     print()
     print("Bem-vindo ao sistema da Urbs!")
@@ -11,9 +12,9 @@ while True:
     print("[1] Usuário")
     print("[2] Administrador")
     print("[3] Sair\n")
-    escolha = (input("Escolha uma opção: "))
+    escolha_menu = (input("Escolha uma opção: "))
 
-    if escolha == '1':
+    if escolha_menu == '1':
         while True:
             print("Você é um usuário\n")
             print(f"Você tem R${creditos_cartão}")
@@ -22,13 +23,13 @@ while True:
             print("[1] Carregar cartão")
             print("[2] Fazer viagem")
             print("[3] voltar para página inicial\n")
-            escolha = (input("Escolha uma opção: "))
+            escolha_user = (input("Escolha uma opção: "))
 
-            if escolha == '1':
+            if escolha_user == '1':
                 creditos_adicionados = int(input("Insira quantos créditos deseja colocar no cartão: "))
                 creditos_cartão += creditos_adicionados
                 print(f"Você adicionou R${creditos_adicionados} ao seu cartão agora você tem R${creditos_cartão}\n")
-            elif escolha == '2':
+            elif escolha_user == '2':
                 if creditos_cartão >= preco_passagem:
                     creditos_cartão -= preco_passagem
                     print(f"Você fez uma viagem! O custo foi de R${preco_passagem}")
@@ -54,12 +55,12 @@ while True:
                             break
                         else:
                             print("Opção inválida, tente novamente!\n")
-            elif escolha == '3':
+            elif escolha_user == '3':
                 break
             else:
                 print("Opção inválida, tente novamente!")
 
-    elif escolha == '2':
+    elif escolha_menu == '2':
         while volta == 0:
             print("Você é um administrador, favor inserir a senha para continuar (caso não seja um administrador, digite 'sair')")
             senha_inserida = input("Digite a senha: ")
@@ -73,9 +74,9 @@ while True:
                     print("[2] Verificar saldo do usuário")
                     print("[3] Definir uma nova senha")
                     print("[4] Voltar para página inicial\n")
-                    escolha = (input("Escolha uma opção: "))
+                    escolha_adm = (input("Escolha uma opção: "))
 
-                    if escolha == '1':
+                    if escolha_adm == '1':
                         while True:
                             novo_preco_passagem = float(input("Qual será o novo preço da passagem? (Se deseja voltar digite '0'): "))
                             if novo_preco_passagem < 0:
@@ -87,10 +88,10 @@ while True:
                                 preco_passagem = novo_preco_passagem
                                 print(f"O preço da passagem agora é de R${preco_passagem}\n")
                                 break
-                    elif escolha == '2':
+                    elif escolha_adm == '2':
                         print()
                         print(f"O saldo do usuário é de R${creditos_cartão}\n")
-                    elif escolha == '3':
+                    elif escolha_adm == '3':
                         while True:
                             print('caso deseje voltar digite "voltar" (a senha não pode ser "voltar")')
                             nova_senha = input("Insira a nova senha: ")
@@ -104,7 +105,7 @@ while True:
                                 senha = nova_senha
                                 print("Senha redefinida com sucesso!\n")
                                 break
-                    elif escolha == '4':
+                    elif escolha_adm == '4':
                         volta += 1
                         break
                     else:
@@ -114,11 +115,13 @@ while True:
                 if tentativas == 0:
                     print()
                     print("Você excedeu o número de tentativas, desligando o sistema por motivos de segurança")
+                    start = False
                     break
                 else:
                     print()
                     print(f"Senha incorreta, você tem mais {tentativas} tentativas restantes")
-    elif escolha == "3":
-        break
+    elif escolha_menu == "3":
+        print("Desligando o sistema...")
+        start = False
     else:
         print("Opção inválida, tente novamente!")
