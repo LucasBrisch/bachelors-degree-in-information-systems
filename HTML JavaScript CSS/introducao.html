@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Documento</title>
+    <style>
+        h1, h2, h3, h4 {color: gray; text-align: center;}
+        p {color: gray; font-size: medium; text-align: center;}
+        body {background-color: black;}
+        a {text-align: center}
+
+        .glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+/* esse botão eu achei pronto na internet  */
+    </style>
+    
+</head>
+<body>
+    
+    <h1>Olá! Meu nome é Lucas...</h1>
+    <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+        <button class="glow-on-hover" onclick="window.location.href='mailto:lucasbrisch@gmail.com'">Email</button>
+        <p></p>
+        <button class="glow-on-hover" onclick="window.location.href='tel:+5541992255585'">Telefone</button>
+    </div>
+    <!-- eu pesquisei como fazia botão pq queria q ficasse mais bonitinho :) -->
+    <p>Sou estudante de Bacharelado em sistemas de informação na PUCPR, tenho 18 anos de idade, adoro praticar esportes,
+        principalmente futebol, e sempre fui apaixonado pela tecnologia, por isso a escolha do curso.
+    </p>
+    <hr>
+    <h2>Minha formação:</h2>
+    <h3>Bacharelado em sistemas de informação - PUCPR</h3>
+    <p>Início: 2024</p>
+    <p>Final (previsto): 2027</p>
+    <hr>
+    <h4>Minhas redes sociais:</h4>
+    <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+        <a href="https://www.linkedin.com/in/lucas-zanlorenzi-5b9792216/">LinkedIn</a>
+        <br>
+        <a href="https://www.instagram.com/lucasbrisch/">Instagram</a>
+        <br>
+        <a href="https://github.com/LucasBrisch">Github</a>
+</body>
+</html>

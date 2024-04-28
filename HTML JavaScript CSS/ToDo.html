@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horário</title>
+    <style>
+        body {
+            background-color: black;}
+        h2 {
+            text-align: center;
+            animation: piscar 0.2s linear infinite;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: lightgray;
+
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid ;
+        }
+        th {
+            background-color: lightgray;
+            text-align: center;
+        }
+        .girar {
+        animation: girar 2s linear infinite;
+        border-radius: 50%;
+    }
+
+    @keyframes girar {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 60px
+    }
+    @keyframes piscar {
+        0% { color: red; }
+        25% { color: orange; }
+        50% { color: yellow; }
+        75% { color: green; }
+        100% { color: blue; }
+    }
+
+    .piscar {
+        animation: piscar 0.2s linear infinite;
+    }
+    </style>
+</head>
+<body>
+    <h2>To-do-list</h2>
+    <table border = 1 class="piscar">
+        <tr>
+            <th></th>
+            <th colspan="2">Horário</th>
+            <th>Tarefa</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>09:00</td>
+            <td>10:00</td>
+            <td>Estudar HTML</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>10:00</td>
+            <td>11:00</td>
+            <td>Fazer atividade</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>11:00</td>
+            <td>12:00</td>
+            <td>Lavar a louça</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>15:00</td>
+            <td>16:00</td>
+            <td>Arrumar o quarto</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>17:00</td>
+            <td>18:00</td>
+            <td>Organizar material</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>18:00</td>
+            <td>19:00</td>
+            <td>Aula</td>
+        </tr>
+    </table>
+    <img class="girar" src="https://www.visaohospital.com.br/wp-content/uploads/2023/09/GettyImages-963477308.jpg" alt="Description of the image">
+</body>
+</html>
