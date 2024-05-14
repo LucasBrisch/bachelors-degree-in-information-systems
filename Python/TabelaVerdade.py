@@ -8,5 +8,6 @@ equacao = []
 print("Digite a equação: ")
 equacao.append(input())
 
-    
-print (ttg.Truths(vars, equacao, ints=False))
+x = ttg.Truths(vars, equacao, ints=False)
+print(x)
+print (x.valuation())
