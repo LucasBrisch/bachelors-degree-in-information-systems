@@ -4,7 +4,7 @@ data_hoje = str(date.today()) #a data vem no formato aaaa-mm-dd, separado por hi
 print(f'Data de hoje: {data_hoje}')
 #6696 são 18 anos em dias, nesse programa considerei todos os meses tendo 31 dias pra facilitar
 data_nasc = input('Digite a sua data de nascimento (dd/mm/aaaa): ')
-ano_atual, mes_atual, dia_atual = map(int, data_hoje.split('-')) #split so funciona com strings, por isso la em cima a vatiaavel data_hoje foi convertida para string
+ano_atual, mes_atual, dia_atual = map(int, data_hoje.split('-')) #split so funciona com strings, por isso la em cima a variavel data_hoje foi convertida para string
 dia_nasc, mes_nasc, ano_nasc = map(int, data_nasc.split('/'))
 #calculo para definir a idade do usuario em dias
 idade_dias = abs(((mes_atual * 31) + (ano_atual * 12 * 31) + (dia_atual)) - ((mes_nasc * 31) + (ano_nasc * 12 *31) + (dia_nasc)))
