@@ -13,4 +13,4 @@ for linha in range(n_Linhas):
     soma = 0
     for coluna in range(n_Colunas):
         soma = soma + matriz[linha][coluna]
-print('Soma na linha ', linha, ' = ', soma)
+    print('Soma na linha ', linha, ' = ', soma)

@@ -119,15 +119,14 @@ def devolver_bicicleta():
     data_devolucao = input("Dia (dd/mm/aaaa): ")
     horario_devolucao = input("Hora (hh:mm): ")
     tempo_de_uso = calcular_horas(data_devolucao, horario_devolucao, data_retirada, horario_retirada)
-    if creditos < tempo_de_uso:
-        print ("Créditos insuficientes para devolver a bicicleta")
-        print ("Por favor adicione créditos e tente novamente")
-        adicionar_creditos()
+    print (f"Bicicleta devolvida após {tempo_de_uso} horas de uso")
+    creditos -= tempo_de_uso
+    print (f"Foram descontados {tempo_de_uso} créditos da sua conta")
+    if creditos < 0:
+        print("Infelizmente você não possui créditos suficientes para pagar o aluguel da bicicleta, logo você está devendo ao BikePy")
+        print(f"Agora você tem {creditos} créditos, favor adicionar créditos para poder alugar novamente")
     else:
-        print (f"Bicicleta devolvida após {tempo_de_uso} horas de uso")
-        creditos -= tempo_de_uso
-        print (f"Foram descontados {tempo_de_uso} créditos da sua conta")
-    
+        print (f"Você possui {creditos} créditos restantes")
     emprestimo = "Retirada: " + data_retirada + " - "+ horario_retirada + " - Devolução: " + data_devolucao + " - "+ horario_devolucao
     historico.append(emprestimo)
         
@@ -148,13 +147,19 @@ def calcular_horas (data_devolucao, horario_devolucao, data_retirada, horario_re
     dia_retirada, mes_retirada, ano_retirada = map(int, data_retirada.split('/'))
     hora_retirada, minuto_retirada = map(int, horario_retirada.split(':'))
     
+
     #transforma tudo em minutos, pra saber durante quantos minutos a bicicleta foi alugada, estão sendo usados minutos pois é a menor metrica de tempo
-    tempo_minutos = abs(((mes_devolucao * 31 * 24 * 60) + (ano_devolucao * 12 * 31 * 24 * 60) + (dia_devolucao * 24 * 60) + (hora_devolucao * 60) + (minuto_devolucao))
-    - ((mes_retirada * 24 * 60 * 31) + (ano_retirada * 12 * 31 * 24 * 60) + (dia_retirada * 24 * 60) + (hora_retirada * 60) + (minuto_retirada)))
+    tempo_minutos = ((mes_devolucao * 31 * 24 * 60) + (ano_devolucao * 12 * 31 * 24 * 60) + (dia_devolucao * 24 * 60) + (hora_devolucao * 60) + (minuto_devolucao)) - ((mes_retirada * 24 * 60 * 31) + (ano_retirada * 12 * 31 * 24 * 60) + (dia_retirada * 24 * 60) + (hora_retirada * 60) + (minuto_retirada))
     #a função abs é usada para que o resultado seja sempre positivo, independente da ordem dos valores, so para evitar erros
     #se o tempo de uso for menor que 1 hora, o programa arredonda para 1 hora com o math.ceil, ou seja, se o usuario usar a bicicleta por 1 minuto, ele paga 1 hora
-    tempo_horas = math.ceil(tempo_minutos / 60)
-    return tempo_horas
+    if tempo_minutos < 0:
+        print ("Data de devolução inválida")
+        devolver_bicicleta()
+    else:
+        tempo_horas = math.ceil(tempo_minutos / 60)
+        return tempo_horas
+
+    
     
 
 main()
