@@ -80,6 +80,9 @@ def menu ():
     elif opcao == "5":
         print ("Até logo!")
         exit()
+    else:
+        print ("Opção inválida")
+        menu()
             
             
 #função para adicionar créditos à conta do usuário, o usuário pode adicionar quantos créditos quiser, desde que não seja um valor negativo
@@ -138,7 +141,7 @@ def devolver_bicicleta():
 
 #função para calcular o tempo de uso da bicicleta, a função recebe a data e o horário da devolução e da retirada, e calcula a diferença entre eles
 def calcular_horas (data_devolucao, horario_devolucao, data_retirada, horario_retirada):
-    global hora_retirada, minuto_retirada, dia_retirada, mes_retirada, ano_retirada
+    
     
     #o split separa a string em partes, o map transforma as partes em inteiros, para que assim esses valores possam ser usados em operações matemáticas
     dia_devolucao, mes_devolucao, ano_devolucao = map(int, data_devolucao.split('/'))
