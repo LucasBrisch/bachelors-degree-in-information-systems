@@ -1,4 +1,4 @@
-body {
+o body {
     font-family: "Poppins", sans-serif;
 }
 @keyframes piscar {
@@ -7,6 +7,11 @@ body {
 50% { color: yellow; }
 75% { color: green; }
 100% { color: blue; }
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .piscar {
@@ -20,6 +25,7 @@ animation: piscar 0.5s linear infinite;
     border-radius: 5px;
     margin-top: 80px;
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+    animation: girar 2s linear infinite;
 }
 .form-group {
     margin-bottom: 10px;
