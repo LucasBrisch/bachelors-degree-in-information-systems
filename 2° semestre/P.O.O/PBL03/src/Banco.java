@@ -29,8 +29,8 @@ public class Banco {
 }
 
 class Cliente {
-    String nome;
-    double saldo;
+    private String nome;
+    private double saldo;
 
     Cliente (String nome, Double saldo) {
         this.nome = nome;
@@ -38,11 +38,16 @@ class Cliente {
     }
 
     void deposito (double quantidade) {
+
         saldo += quantidade;
     }
 
     void retirada (double saque) {
+        if (saldo >= saque) {
         saldo -= saque;
+        } else {
+            System.out.println("Saldo insuficiente");
+        }
     }
 
     String info () {
