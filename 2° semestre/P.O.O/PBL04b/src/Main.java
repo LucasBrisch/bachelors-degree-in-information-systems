@@ -41,7 +41,6 @@ public class Main {
         p2_2.livros.add(l10);
         p2_2.livros.add(l11);
         p2_2.livros.add(l12);
-
         b1.prateleiras.add(p1_1);
         b1.prateleiras.add(p2_1);
         b1.prateleiras.add(p1_2);
