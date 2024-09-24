@@ -61,9 +61,9 @@ public class Main {
 
 
 class Pessoa {
-     String nome;
-     int idade;
-     String email;
+     protected String nome;
+     protected int idade;
+     protected String email;
 
 
     Pessoa(String nome, int idade, String email) {
