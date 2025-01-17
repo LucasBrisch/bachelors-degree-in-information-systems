@@ -45,7 +45,7 @@ abstract class Personagem {
     protected float posicao_x;
     protected float posicao_y;
     protected float posicao_z;
-    int cor;
+    protected int cor;
 
     Personagem(boolean vivo, float posicao_x, float posicao_y, float posicao_z, int cor) {
         this.vivo = vivo;
