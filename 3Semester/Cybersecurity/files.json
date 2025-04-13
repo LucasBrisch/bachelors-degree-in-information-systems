@@ -1,0 +1,41 @@
+[
+    {
+        "nome": "teste.txt",
+        "dono": "CouvesJoao",
+        "podem_ler": [
+            "CouvesJoao"
+        ],
+        "podem_escrever": [
+            "CouvesJoao"
+        ],
+        "podem_executar": [
+            "CouvesJoao"
+        ]
+    },
+    {
+        "nome": "asdasd",
+        "dono": "user",
+        "podem_ler": [
+            "user"
+        ],
+        "podem_escrever": [
+            "user"
+        ],
+        "podem_executar": [
+            "user"
+        ]
+    },
+    {
+        "nome": "4312",
+        "dono": "user",
+        "podem_ler": [
+            "user"
+        ],
+        "podem_escrever": [
+            "user"
+        ],
+        "podem_executar": [
+            "user"
+        ]
+    }
+]
