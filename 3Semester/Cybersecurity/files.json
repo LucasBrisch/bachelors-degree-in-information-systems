@@ -6,7 +6,8 @@
             "CouvesJoao"
         ],
         "podem_escrever": [
-            "CouvesJoao"
+            "CouvesJoao",
+            "user"
         ],
         "podem_executar": [
             "CouvesJoao"
@@ -27,6 +28,19 @@
     },
     {
         "nome": "4312",
+        "dono": "user",
+        "podem_ler": [
+            "user"
+        ],
+        "podem_escrever": [
+            "user"
+        ],
+        "podem_executar": [
+            "user"
+        ]
+    },
+    {
+        "nome": "testando.123",
         "dono": "user",
         "podem_ler": [
             "user"

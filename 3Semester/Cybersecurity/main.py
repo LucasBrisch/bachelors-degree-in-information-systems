@@ -1,5 +1,9 @@
 # Trabalho individual realizado por Lucas Brisch Zanlorenzi
-# Nesse código apenas o dono do arquivo pode deletar o mesmo, e o arquivo n é deletado de vdd, ele só diz q a permissão foi dada
+
+# Nesse código apenas o dono do arquivo pode deletar o mesmo e o arquivo não é deletado de vdd, ele só diz que a permissão foi concedida
+# No arquivo files.json, cada arquivo possui uma serie de listas, uma lista para cada permissão, dentro dessas listas são colocados os usernames do usuarios que podem fazer a ação X no arquivo
+# Por padrão, os donos dos arquivos tem todas as autorizações sobre os mesmos, caso queira privar algum usuario de fazer algo em seu proprio arquivo, deve ser alterado no files.json
+# O arquivo base_de_dados.json foi criado para fins de organização, para facilitar a busca e listagem dos arquivos individuais de cada usuario quando solicitado pelo mesmo
 
 import json
 
@@ -84,11 +88,11 @@ def adicionar_usuario_ao_banco(nome_usuario, senha):
             usuarios = [{"username": nome_usuario, "password": senha}]
             json.dump(usuarios, arquivo, indent=4)
 
-    criar_permissao(nome_usuario)
+    criar_base(nome_usuario)
 
-def criar_permissao(nome_usuario):
+def criar_base(nome_usuario):
     try:
-        with open('base_de_autorização.json', "r+") as arquivo:
+        with open('base_de_dados.json', "r+") as arquivo:
             try:
                 base = json.load(arquivo)
             except json.JSONDecodeError:
@@ -99,7 +103,7 @@ def criar_permissao(nome_usuario):
             json.dump(base, arquivo, indent=4)
             arquivo.truncate()
     except FileNotFoundError:
-        with open('base_de_autorização.json', "w") as arquivo:
+        with open('base_de_dados.json', "w") as arquivo:
             base = [{"nome": nome_usuario, "arquivos": []}]
             json.dump(base, arquivo, indent=4)
 
@@ -129,9 +133,6 @@ def criar_arquivo(nome_usuario):
     
     novo_arquivo = {
         "nome": nome_arquivo,
-        "leitura": True,
-        "escrita": True,
-        "execucao": True
     }
 
     base_geral = {
@@ -143,7 +144,7 @@ def criar_arquivo(nome_usuario):
     }
 
     try:
-        with open('base_de_autorização.json', 'r+') as arquivo:
+        with open('base_de_dados.json', 'r+') as arquivo:
             try:
                 base = json.load(arquivo)
             except json.JSONDecodeError:
@@ -161,7 +162,7 @@ def criar_arquivo(nome_usuario):
             json.dump(base, arquivo, indent=4)
             arquivo.truncate()
     except FileNotFoundError:
-        print("Erro: base_de_autorização.json não encontrado.")
+        print("Erro: base_de_dados.json não encontrado.")
         return
 
     try:
@@ -216,7 +217,7 @@ def verificar(acao, arquivo, nome_usuario):
 
 def ver_meus_arquivos(nome_usuario):
     try:
-        with open('base_de_autorização.json', 'r') as arquivo:
+        with open('base_de_dados.json', 'r') as arquivo:
             base = json.load(arquivo)
     except (FileNotFoundError, json.JSONDecodeError):
         print("Nenhum arquivo encontrado.")
