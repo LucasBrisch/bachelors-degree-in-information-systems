@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.pucpr</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>aulawebservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>teste</name>
-	<description>Demo project for Spring Boot</description>
+	<name>projetowebservice</name>
+	<description>Projeto da disciplina de webservice</description>
 	<url/>
 	<licenses>
 		<license/>

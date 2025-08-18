@@ -1,10 +1,10 @@
-package br.pucpr.demo;
+package br.pucpr.projetowebservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TesteApplicationTests {
+class ProjetowebserviceApplicationTests {
 
 	@Test
 	void contextLoads() {
