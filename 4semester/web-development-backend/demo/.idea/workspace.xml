@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5330ce-a236-4890-ac53-d8abde6e9576" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/pucpr/demo/TesteApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/projetoexemploapplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/br/pucpr/demo/TesteApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="9e5330ce-a236-4890-ac53-d8abde6e9576" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,6 +95,7 @@
       <updated>1754609663506</updated>
       <workItem from="1754609665554" duration="3496000" />
       <workItem from="1755213689483" duration="1939000" />
+      <workItem from="1755817873734" duration="44000" />
     </task>
     <servers />
   </component>
