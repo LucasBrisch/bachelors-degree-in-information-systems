@@ -1,51 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".MinhaActivity"
-    android:fitsSystemWindows="true"
-    >
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="150dp"
+    android:padding="30dp">
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/edtPrimeiro"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:layout_height="66dp"
+        android:hint="Informe o primeiro valor"
+        android:inputType="numberDecimal"
+        android:text="1.7"
+        android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/edtSegundo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
-
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:layout_height="69dp"
+        android:hint="Informe o segundo valor"
+        android:inputType="numberDecimal"
+        android:text="100"
+        android:textAlignment="center" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnIniciar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Iniciar Cálculo" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnConsultar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
-
+        android:text="Consultar Resultado"
+        android:enabled="false" />
 </LinearLayout>
-
-
