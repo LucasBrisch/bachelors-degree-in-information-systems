@@ -1,6 +1,10 @@
 package br.pucpr.appcomponents;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,35 +12,45 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class MinhaActivity extends AppCompatActivity {
+
+    private Button btnIniciar, btnConsultar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_minha);
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
 
-        Button btnIniciar = findViewById(R.id.btnIniciar);
-        Button btnConsultar = findViewById(R.id.btnConsultar);
+        btnIniciar = findViewById(R.id.btnIniciar);
+        btnConsultar = findViewById(R.id.btnConsultar);
 
-        EditText edtPrimeiro = findViewById(R.id.edtPrimeiro);
-        EditText edtSegundo = findViewById(R.id.edtSegundo);
+        EditText edtTxtPrimeiro = findViewById(R.id.edtPrimeiro);
+        EditText edtTxtSegundo = findViewById(R.id.edtSegundo);
 
-        btnIniciar.setOnClickListener(v -> {
+        btnIniciar.setOnClickListener( v -> {
+            String primeiro = edtTxtPrimeiro.getText().toString();
+            Double vlrPrimeiro = Double.parseDouble(primeiro);
 
+            String segundo = edtTxtSegundo.getText().toString();
+            Double vlrSegundo = Double.parseDouble(segundo);
 
+            Intent intencao = new Intent(this, MeuService.class);
+            intencao.putExtra("primeiro", vlrPrimeiro);
+            intencao.putExtra("segundo", vlrSegundo);
 
-            double primeiro = Double.parseDouble(edtPrimeiro.getText().toString());
-            double segundo = Double.parseDouble(edtSegundo.getText().toString());
+            startService(intencao);
 
-            Intent intent = new Intent(this, MeuService.class);
-            intent.putExtra("primeiro", primeiro);
-            intent.putExtra("segundo", segundo);
-
-            startService(intent);
-
-            Toast.makeText(this, "Clicou", Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, "Clicou", Toast.LENGTH_LONG).show();
         });
 
         btnConsultar.setOnClickListener(v -> {
@@ -44,5 +58,24 @@ public class MinhaActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    private BroadcastReceiver meuReceiver;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        meuReceiver = new MeuReceiver(btnConsultar);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            registerReceiver(meuReceiver, new IntentFilter("CALCULO_FINALIZADO"), Context.RECEIVER_EXPORTED);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        unregisterReceiver(meuReceiver);
     }
 }
